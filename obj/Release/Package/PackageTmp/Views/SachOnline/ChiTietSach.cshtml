@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "ChiTietSach";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Chi Tiết Sách</h2>
+<div class="thumbnail">
+    <h4 class="tensach">@Model.TenSach</h4>
+    <img src="~/Statics/Images/@Model.AnhBia" alt="@Model.TenSach" />
+    <div class="motasach"><p>@Html.Raw(@Model.MoTa.ToString().Replace("\n", "</p><p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp"))</p></div>
+
+    <p class="ngaycapnhat">Ngày cập nhật: @Html.FormatValue(@Model.NgayCapNhat, "{0:dd/MM/yyyy}")</p>
+    <p class="giaban">Giá bán: <span>@Html.FormatValue(@Model.GiaBan, "{0:#,##0}") VNĐ</span></p>
+    <p class="autocard">
+        <a href="@Url.Action("ThemGioHang","GioHang", new { ms = Model.MaSach, url =
+Request.Url.ToString() }) " class="btn btn-primary" role="button">
+
+            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Add to Card
+        </a>
+    </p>
+</div>
+
